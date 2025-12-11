@@ -2,7 +2,6 @@
 
 This README provides step-by-step instructions to install a complete ROS 2 environment on **Ubuntu 22.04**, including:
 
-- ROS 2 Humble  
 - Gazebo (Ignition Fortress or Garden)  
 - RViz2  
 - Terminator  
@@ -36,36 +35,8 @@ Initialize rosdep:
 sudo rosdep init
 rosdep update
 
-## 2️⃣ Install ROS 2 Humble
 
-ROS 2 Humble is the recommended long-term support version for Ubuntu 22.04.
-Enable required repositories:
-
-sudo apt install software-properties-common
-sudo add-apt-repository universe
-
-Import the ROS 2 GPG key:
-
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
-    -o /usr/share/keyrings/ros-archive-keyring.gpg
-
-Add the ROS 2 repository:
-
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \
-https://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | \
-sudo tee /etc/apt/sources.list.d/ros2.list
-
-Install ROS 2 Desktop:
-
-sudo apt update
-sudo apt install ros-humble-desktop -y
-
-Source ROS 2 automatically:
-
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-
-## 3️⃣ Install Gazebo (Fortress or Garden)
+## 2 Install Gazebo (Fortress or Garden)
 Option A — Install Gazebo Fortress (Ignition)
 
 sudo apt install ros-humble-ros-gz -y
