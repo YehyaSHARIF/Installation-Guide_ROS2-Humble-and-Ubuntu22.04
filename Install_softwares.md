@@ -37,13 +37,9 @@ rosdep update
 
 
 ## 2 Install Gazebo (Fortress or Garden)
-Option A — Install Gazebo Fortress (Ignition)
 
-sudo apt install ros-humble-ros-gz -y
 
-Option B — Install Gazebo Garden
-
-sudo apt install ros-humble-ros-gzgarden -y
+sudo apt install gazebo
 
 Launch Gazebo:
 
@@ -81,7 +77,7 @@ sudo apt install ros-humble-plotjuggler ros-humble-plotjuggler-ros -y
 
 Run PlotJuggler:
 
-plotjuggler
+ros2 run plotjuggler plotjuggler
 
 ## 7️⃣ Useful ROS 2 Tools
 colcon (build system)
