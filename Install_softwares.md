@@ -36,7 +36,7 @@ Initialize rosdep:
 sudo rosdep init
 rosdep update
 
-2️⃣ Install ROS 2 Humble
+## 2️⃣ Install ROS 2 Humble
 
 ROS 2 Humble is the recommended long-term support version for Ubuntu 22.04.
 Enable required repositories:
@@ -65,7 +65,7 @@ Source ROS 2 automatically:
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 
-3️⃣ Install Gazebo (Fortress or Garden)
+## 3️⃣ Install Gazebo (Fortress or Garden)
 Option A — Install Gazebo Fortress (Ignition)
 
 sudo apt install ros-humble-ros-gz -y
@@ -78,7 +78,7 @@ Launch Gazebo:
 
 gazebo
 
-4️⃣ Install RViz2
+## 4️⃣ Install RViz2
 
 RViz2 is included in ros-humble-desktop.
 
@@ -90,7 +90,7 @@ Run RViz2:
 
 rviz2
 
-5️⃣ Install Terminator
+## 5️⃣ Install Terminator
 
 Terminator allows efficient multi-terminal workflows for ROS 2.
 
@@ -100,7 +100,7 @@ Run Terminator:
 
 terminator
 
-6️⃣ Install PlotJuggler
+## 6️⃣ Install PlotJuggler
 
 PlotJuggler is used to visualize ROS 2 topics (real-time or bag files).
 
@@ -112,7 +112,7 @@ Run PlotJuggler:
 
 plotjuggler
 
-7️⃣ Useful ROS 2 Tools
+## 7️⃣ Useful ROS 2 Tools
 colcon (build system)
 
 Already installed above.
@@ -125,7 +125,7 @@ rqt (graphical tools)
 
 sudo apt install ros-humble-rqt ros-humble-rqt-common-plugins -y
 
-8️⃣ Verification
+## 8️⃣ Verification
 Test ROS 2 communication
 
 Open two terminals (using Terminator if preferred).
