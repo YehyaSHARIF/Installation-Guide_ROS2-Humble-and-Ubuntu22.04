@@ -26,9 +26,8 @@ sudo apt install -y \
     git \
     lsb-release \
     gnupg \
-    python3-colcon-common-extensions \
-    python3-rosdep \
-    python3-argcomplete
+    python3-colcon-common-extensions
+
 
 Initialize rosdep:
 
