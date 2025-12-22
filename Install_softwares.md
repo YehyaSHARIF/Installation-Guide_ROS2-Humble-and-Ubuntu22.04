@@ -30,6 +30,7 @@ sudo apt install -y \
 
 Initialize rosdep:
 
+sudo apt install python3-rosdep2
 sudo rosdep init
 rosdep update
 
