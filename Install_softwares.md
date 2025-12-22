@@ -97,10 +97,6 @@ Terminal 2:
 
 ros2 run demo_nodes_cpp listener
 
-You should see messages being published and received.
-Test Gazebo + ROS 2 integration
-
-ros2 launch ros_gz_sim gz_sim.launch.py
 
 ✔️ Installation Complete!
 
