@@ -1,155 +1,188 @@
-# ROS 2 Environment Setup — Gazebo, RViz2, Terminator, PlotJuggler
-
-This README provides step-by-step instructions to install a complete ROS 2 environment on **Ubuntu 22.04**, including:
-
-- Gazebo (Ignition Fortress or Garden)  
-- RViz2  
-- Terminator  
-- PlotJuggler  
-- Basic system and ROS 2 prerequisites  
-
----
-
-## 1️⃣ System Prerequisites
-
-Update your Ubuntu system:
-
-```bash
-sudo apt update && sudo apt upgrade -y
-
-Install essential tools and dependencies:
-
+2️⃣ Essential Development Tools
 sudo apt install -y \
-    build-essential \
-    curl \
-    wget \
-    git \
-    lsb-release \
-    gnupg
+  build-essential \
+  curl \
+  wget \
+  git \
+  lsb-release \
+  gnupg
+
+3️⃣ Configure ROS 2 Repository (Recommended Method)
+
+⚠️ Do not use apt-key (deprecated).
+This setup uses the official ROS keyring method.
+
+Add ROS keyring
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
+  -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+Add ROS 2 repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \
+http://packages.ros.org/ros2/ubuntu jammy main" | \
+sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 
-Initialize rosdep:
+Update package index:
 
-sudo apt install python3-rosdep2
-sudo rosdep init
-rosdep update
+sudo apt update
+
+4️⃣ Install ROS 2 Humble
+
+Recommended full desktop installation:
+
+sudo apt install -y ros-humble-desktop
 
 
-## 2 Install Gazebo (Fortress or Garden)
+Source ROS:
+
+source /opt/ros/humble/setup.bash
 
 
-sudo apt install gazebo
+(Optional) Automatically source ROS on startup:
 
-Launch Gazebo:
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+
+5️⃣ Fix Python / catkin Dependency Conflicts (IMPORTANT)
+
+This step prevents known conflicts between Ubuntu Python packages and ROS 2 dependencies.
+
+Remove conflicting Ubuntu package:
+
+sudo apt remove -y python3-catkin-pkg
+sudo dpkg --configure -a
+sudo apt --fix-broken install
+
+
+Install ROS-compatible versions:
+
+sudo apt install -y python3-catkin-pkg-modules python3-catkin-pkg
+
+
+Verify package origins:
+
+apt-cache policy python3-catkin-pkg python3-catkin-pkg-modules
+
+
+Both packages must come from packages.ros.org.
+
+6️⃣ Install Gazebo
+Option A — Gazebo Classic
+sudo apt install -y gazebo
+
+
+Run:
 
 gazebo
 
-## 4️⃣ Install RViz2
+Option B — Gazebo with ROS 2 integration (Recommended)
+sudo apt install -y ros-humble-ros-gz-sim
 
-RViz2 is included in ros-humble-desktop.
 
-If needed, install manually:
+Launch:
 
-sudo apt install ros-humble-rviz2 -y
+ros2 launch ros_gz_sim gz_sim.launch.py
 
-Run RViz2:
+7️⃣ Install RViz2
+
+RViz2 is included in ros-humble-desktop, but can be installed explicitly:
+
+sudo apt install -y ros-humble-rviz2
+
+
+Run:
 
 rviz2
 
-## 5️⃣ Install Terminator
+8️⃣ Install Terminator (Multi-Terminal)
+sudo apt install -y terminator
 
-Terminator allows efficient multi-terminal workflows for ROS 2.
 
-sudo apt install terminator -y
-
-Run Terminator:
+Run:
 
 terminator
 
-## 6️⃣ Install PlotJuggler
+9️⃣ Install PlotJuggler
 
-PlotJuggler is used to visualize ROS 2 topics (real-time or bag files).
+PlotJuggler is used to visualize ROS 2 topics in real time or from bag files.
 
-Install with ROS 2 plugins:
+sudo apt install -y \
+  ros-humble-plotjuggler \
+  ros-humble-plotjuggler-ros
 
-sudo apt install ros-humble-plotjuggler ros-humble-plotjuggler-ros -y
 
-Run PlotJuggler:
+Run:
 
 ros2 run plotjuggler plotjuggler
 
-## 7️⃣ Useful ROS 2 Tools
-colcon (build system)
+🔧 ROS 2 Development Tools
+colcon (Build System)
+sudo apt install -y python3-colcon-common-extensions
 
-Already installed above.
 
-Build a ROS 2 workspace:
+Build a workspace:
 
 colcon build --symlink-install
 
-rqt (graphical tools)
+rqt (Graphical Tools)
+sudo apt install -y ros-humble-rqt ros-humble-rqt-common-plugins
 
-sudo apt install ros-humble-rqt ros-humble-rqt-common-plugins -y
+✅ Verification
 
-## 8️⃣ Verification
-Test ROS 2 communication
+Test ROS 2 communication.
 
-Open two terminals (using Terminator if preferred).
+Open two terminals.
 
 Terminal 1:
 
 ros2 run demo_nodes_cpp talker
 
+
 Terminal 2:
 
 ros2 run demo_nodes_cpp listener
 
-You should see messages being published and received.
-Test Gazebo + ROS 2 integration
 
-ros2 launch ros_gz_sim gz_sim.launch.py
+✔️ Messages should be published and received correctly.
 
-✔️ Installation Complete!
+🚀 Environment Ready
 
-You now have a full robotics development environment including:
+Your system now includes:
 
-    ROS 2 Humble
+ROS 2 Humble
 
-    Gazebo Fortress / Garden
+Gazebo / ROS-GZ
 
-    RViz2
+RViz2
 
-    Terminator
+Terminator
 
-    PlotJuggler
+PlotJuggler
 
-    Linux development tools
+colcon & rqt
 
-    ROS 2 build and debugging utilities
+Clean dependency state
 
-Your system is now ready for simulation, visualization, development, and real robotics testing 🚀
-🧩 Optional Enhancements
-🔹 Install Navigation2 (Nav2)
+You are ready for simulation, visualization, development, and real robot experiments.
 
-sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup -y
+🧩 Optional Packages
+Navigation2
+sudo apt install -y ros-humble-navigation2 ros-humble-nav2-bringup
 
-🔹 Install SLAM Toolbox
+SLAM Toolbox
+sudo apt install -y ros-humble-slam-toolbox
 
-sudo apt install ros-humble-slam-toolbox -y
+ROS bag tools
+sudo apt install -y ros-humble-rosbag2*
 
-🔹 Install ROS Bags Tools
+📄 Notes
 
-sudo apt install ros-humble-ros2bag ros-humble-rosbag2* -y
+ROS 2 Humble is officially supported on Ubuntu 22.04
 
+Avoid mixing Ubuntu ROS packages with ROS repository packages
 
----
+Always use packages.ros.org for ROS 2 dependencies
 
-If you'd like, I can also prepare:
+🤝 Contributions
 
-✅ A French version  
-✅ A printable PDF version  
-✅ A version including Docker setup  
-✅ A version adapted for ROS 2 Iron / Jazzy
-
-
-
+Contributions, fixes, and improvements are welcome.
+Feel free to open issues or submit pull requests.
