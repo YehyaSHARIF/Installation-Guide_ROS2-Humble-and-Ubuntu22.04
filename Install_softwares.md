@@ -78,14 +78,7 @@ Run PlotJuggler:
 
 ros2 run plotjuggler plotjuggler
 
-## 7️⃣ Useful ROS 2 Tools
-colcon (build system)
 
-Already installed above.
-
-Build a ROS 2 workspace:
-
-colcon build --symlink-install
 
 rqt (graphical tools)
 
