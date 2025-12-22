@@ -25,8 +25,7 @@ sudo apt install -y \
     wget \
     git \
     lsb-release \
-    gnupg \
-    python3-colcon-common-extensions
+    gnupg
 
 
 Initialize rosdep:
