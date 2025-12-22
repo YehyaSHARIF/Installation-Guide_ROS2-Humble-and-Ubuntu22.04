@@ -110,7 +110,7 @@ You should see messages being published and received, confirming ROS 2 is workin
 - In a Terminal:
    ```bash
   source /opt/ros/humble/setup.bash
-  ros2 run demo_nodes_cpp listener
+  ros2 run turtlesim turtlesim_node
   ```
 ---
 
