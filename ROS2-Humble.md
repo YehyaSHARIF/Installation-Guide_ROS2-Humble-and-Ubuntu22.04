@@ -107,6 +107,11 @@ Test ROS 2 with a simple demo:
 
 You should see messages being published and received, confirming ROS 2 is working.
 
+- In a Terminal:
+   ```bash
+  source /opt/ros/humble/setup.bash
+  ros2 run demo_nodes_cpp listener
+  ```
 ---
 
 > **More Info**: See the [ROS 2 Humble documentation](https://docs.ros.org/en/humble/Installation.html) for advanced topics.
