@@ -1,5 +1,7 @@
-# ROS 2 Environment Setup — Gazebo, RViz2, Terminator, PlotJuggler This README provides step-by-step instructions to install a complete ROS 2 environment on **Ubuntu 22.04**, including: - Gazebo (Ignition Fortress or Garden) - RViz2 - Terminator - PlotJuggler - Basic system and ROS 2 prerequisites --- ## 1️⃣ System Prerequisites Update your Ubuntu system:
-bash
+# ROS 2 Environment Setup — Gazebo, RViz2, Terminator, PlotJuggler
+This README provides step-by-step instructions to install a complete ROS 2 environment on **Ubuntu 22.04**, including: - Gazebo (Ignition Fortress or Garden) - RViz2 - Terminator - PlotJuggler - Basic system and ROS 2 prerequisites 
+--- ## 1️⃣ System Prerequisites Update your Ubuntu system:
+'''bash
 sudo apt update && sudo apt upgrade -y
 
 Install essential tools and dependencies:
